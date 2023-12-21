@@ -4,6 +4,91 @@
     },
     "inbounds": [
         {
+            "tag": "VLESS TCP HTTP",
+            "listen": "0.0.0.0",
+            "port": 8025,
+            "protocol": "vless",
+            "settings": {
+                "clients": [],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "tcpSettings": {
+                    "header": {
+                        "type": "http",
+                        "request": {
+                            "method": "GET",
+                            "path": [
+                                "/"
+                            ],
+                            "headers": {
+                                "Host": [
+                                    ""
+                                ]
+                            }
+                        },
+                        "response": {}
+                    }
+                },
+                "security": "none"
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
+        },
+        {
+            "tag": "VLESS TCP",
+            "listen": "0.0.0.0",
+            "port": 7025,
+            "protocol": "vless",
+            "settings": {
+                "clients": [],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "tcp"
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
+        },
+        {
+            "tag": "VLESS WS HTTP",
+            "listen": "0.0.0.0",
+            "port": 6025,
+            "protocol": "vless",
+            "settings": {
+                "clients": [],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "none",
+                "wsSettings": {
+                    "path": "/",
+                    "headers": {
+                        "Host": ""
+                    }
+                }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
+        },
+        {
             "tag": "VLESS WS",
             "listen": "0.0.0.0",
             "port": 8880,
@@ -17,12 +102,36 @@
                 "wsSettings": {
                     "path": "/"
                 }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
+        },
+        {
+            "tag": "SHADOWSOCKS",
+            "listen": "0.0.0.0",
+            "port": 3025,
+            "protocol": "shadowsocks",
+            "settings": {
+                "clients": [],
+                "network": "tcp,udp"
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
             }
         },
         {
             "tag": "VLESS WS Tls",
             "listen": "0.0.0.0",
-            "port": 4070,
+            "port": 4055,
             "protocol": "vless",
             "settings": {
                 "clients": [],
@@ -46,19 +155,26 @@
                     "certificates": [
                         {
                             "ocspStapling": 3600,
-                            "certificateFile": "/var/lib/marzban/certs/nd1.realp.cfd.cer",
-                            "keyFile": "/var/lib/marzban/certs/nd1.realp.cfd.cer.key"
+                            "certificateFile": "/var/lib/marzban/certs/nd1.soulsharpe.com.cer",
+                            "keyFile": "/var/lib/marzban/certs/nd1.soulsharpe.com.cer.key"
                         }
                     ],
                     "minVersion": "1.2",
                     "cipherSuites": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
                 }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
             }
         },
         {
             "tag": "VLESS TCP TLS",
             "listen": "0.0.0.0",
-            "port": 2030,
+            "port": 2015,
             "protocol": "vless",
             "settings": {
                 "clients": [],
@@ -83,17 +199,24 @@
                     ],
                     "certificates": [
                         {
-                            "certificateFile": "/var/lib/marzban/certs/nd1.realp.cfd.cer",
-                            "keyFile": "/var/lib/marzban/certs/nd1.realp.cfd.cer.key"
+                            "certificateFile": "/var/lib/marzban/certs/nd1.soulsharpe.com.cer",
+                            "keyFile": "/var/lib/marzban/certs/nd1.soulsharpe.com.cer.key"
                         }
                     ]
                 }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
             }
         },
         {
             "tag": "VLESS TCP HTTP TLS",
             "listen": "0.0.0.0",
-            "port": 4075,
+            "port": 4060,
             "protocol": "vless",
             "settings": {
                 "clients": [],
@@ -109,8 +232,8 @@
                     ],
                     "certificates": [
                         {
-                            "certificateFile": "/var/lib/marzban/certs/nd1.realp.cfd.cer",
-                            "keyFile": "/var/lib/marzban/certs/nd1.realp.cfd.cer.key"
+                            "certificateFile": "/var/lib/marzban/certs/nd1.soulsharpe.com.cer",
+                            "keyFile": "/var/lib/marzban/certs/nd1.soulsharpe.com.cer.key"
                         }
                     ]
                 },
@@ -131,12 +254,19 @@
                         "response": {}
                     }
                 }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
             }
         },
         {
             "tag": "VLESSsTCP HTTP TLS",
             "listen": "0.0.0.0",
-            "port": 2087,
+            "port": 2085,
             "protocol": "vless",
             "settings": {
                 "clients": [],
@@ -152,8 +282,8 @@
                     ],
                     "certificates": [
                         {
-                            "certificateFile": "/var/lib/marzban/certs/nd1.realp.cfd.cer",
-                            "keyFile": "/var/lib/marzban/certs/nd1.realp.cfd.cer.key"
+                            "certificateFile": "/var/lib/marzban/certs/nd1.soulsharpe.com.cer",
+                            "keyFile": "/var/lib/marzban/certs/nd1.soulsharpe.com.cer.key"
                         }
                     ]
                 },
@@ -174,12 +304,19 @@
                         "response": {}
                     }
                 }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
             }
         },
         {
             "tag": "VMESS TCP HTTP TLS",
             "listen": "0.0.0.0",
-            "port": 4080,
+            "port": 4065,
             "protocol": "vmess",
             "settings": {
                 "clients": []
@@ -209,13 +346,20 @@
                     "certificates": [
                         {
                             "ocspStapling": 3600,
-                            "certificateFile": "/var/lib/marzban/certs/nd1.realp.cfd.cer",
-                            "keyFile": "/var/lib/marzban/certs/nd1.realp.cfd.cer.key"
+                            "certificateFile": "/var/lib/marzban/certs/nd1.soulsharpe.com.cer",
+                            "keyFile": "/var/lib/marzban/certs/nd1.soulsharpe.com.cer.key"
                         }
                     ],
                     "minVersion": "1.2",
                     "cipherSuites": "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256:TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384:TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256:TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
                 }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
             }
         }
     ],
@@ -242,6 +386,7 @@
         }
     ],
     "routing": {
+        "domainStrategy": "IPIfNonMatch",
         "rules": [
             {
                 "outboundTag": "warp",
