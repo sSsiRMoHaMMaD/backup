@@ -15,3 +15,6 @@ sleep 2
 
 udp2raw -c -l 127.0.0.1:51826 -r 62.60.160.240:4443 -k passwd -a --fix-gro --cipher-mode xor --raw-mode faketcp --auth-mode simple > /var/lib/udp2raw4.log 2>&1 &
 sleep 2
+
+udp2raw -c -l 127.0.0.1:51827 -r 62.60.160.59:4443 -k passwd -a --fix-gro --cipher-mode xor --raw-mode faketcp --auth-mode simple > /var/lib/udp2raw4.log 2>&1 &
+sleep 2
